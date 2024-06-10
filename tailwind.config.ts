@@ -15,6 +15,9 @@ const config: Config = {
         gray100: '#D1DBE8',
         gray200: '#E8EDF2',
       },
+      borderRadius: {
+        button: '12px',
+      },
     },
   },
   plugins: [],
