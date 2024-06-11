@@ -10,9 +10,10 @@ export const ButtonVariants = cva(
   {
     variants: {
       variant: {
-        solid: 'bg-blue text-white',
+        solid:
+          'bg-blue text-white cursor-pointer hover:brightness-90 transition duration-300 ease-in-out',
         outline: 'border-blue text-black',
-        disabled: 'bg-gray200 text-black',
+        disabled: 'bg-gray200 text-black cursor-not-allowed',
       },
       size: {
         sm: 'h-8 font-normal',
