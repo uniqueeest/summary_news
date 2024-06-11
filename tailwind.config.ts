@@ -18,6 +18,18 @@ const config: Config = {
       borderRadius: {
         button: '12px',
       },
+      fontSize: {
+        12: '0.75rem',
+        14: '0.875rem',
+        16: '1rem',
+        18: '1.125rem',
+        20: '1.25rem',
+        22: '1.375rem',
+        24: '1.5rem',
+        26: '1.625rem',
+        28: '1.75rem',
+        30: '1.875rem',
+      },
     },
   },
   plugins: [],
