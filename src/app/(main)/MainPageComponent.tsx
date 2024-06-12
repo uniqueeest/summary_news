@@ -13,8 +13,8 @@ const MainPageComponent = () => {
           <div className="flex items-center">
             <Image
               src="/icons/search.svg"
-              width={18}
-              height={18}
+              width={20}
+              height={20}
               alt="search-icon"
             />
           </div>
