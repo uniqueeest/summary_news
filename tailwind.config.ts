@@ -16,6 +16,7 @@ const config: Config = {
         gray200: '#E8EDF2',
       },
       borderRadius: {
+        basic: '10px',
         button: '12px',
       },
       fontSize: {
