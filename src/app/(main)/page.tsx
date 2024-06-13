@@ -1,5 +1,5 @@
 import MainPageComponent from './MainPageComponent';
 
-export default function Home() {
+export default function MainPage() {
   return <MainPageComponent />;
 }
