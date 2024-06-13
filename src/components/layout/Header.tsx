@@ -18,7 +18,7 @@ export const Header = ({
   return (
     <div
       className={cn(
-        'relative flex justify-center items-center p-4 w-full font-bold text-18',
+        'sticky top-0 z-10 flex justify-center items-center p-4 w-full font-bold text-18',
         className
       )}
       {...props}
