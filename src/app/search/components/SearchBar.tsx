@@ -10,14 +10,12 @@ import {
   useImperativeHandle,
 } from 'react';
 import Image from 'next/image';
-import { cva } from 'class-variance-authority';
 
 import { cn } from '@/utils';
 
 type SearchBarProps = {
   value: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  onSearch: () => void;
   containerClassName?: string;
 } & Omit<HTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>;
 
@@ -26,7 +24,6 @@ const SearchBar = forwardRef(
     {
       value,
       onChange,
-      onSearch,
       containerClassName,
       className,
       ...props
