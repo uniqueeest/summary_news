@@ -4,16 +4,19 @@ import { ChangeEvent, useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
+import { Spacing } from '@/components/shared';
 import { Header, PageLayout } from '@/components/layout';
-import { SearchBar } from './components';
+import { SearchBar, SearchPanel } from './components';
 import { debounce } from '@/utils';
+import { StockType } from '@/models';
 
 const DEBOUNCE_TIME = 300;
 
-const SearchPageComponent = () => {
+const SearchPageComponent = ({ stockList }: { stockList: StockType[] }) => {
   const router = useRouter();
   const [searchValue, setSearchValue] = useState('');
   const [debounceValue, setDebounceValue] = useState('');
+  const [searchStockList, setSearchStockList] = useState<StockType[]>([]);
 
   const debouncedSearch = useMemo(
     () =>
@@ -35,6 +38,25 @@ const SearchPageComponent = () => {
     };
   }, [debouncedSearch]);
 
+  useEffect(() => {
+    setSearchStockList(
+      stockList.filter((stock) => {
+        if (debounceValue === '') {
+          return false;
+        }
+
+        return (
+          stock.ticker
+            .toLocaleLowerCase()
+            .includes(debounceValue.toLocaleLowerCase()) ||
+          stock.name
+            .toLocaleLowerCase()
+            .includes(debounceValue.toLocaleLowerCase())
+        );
+      })
+    );
+  }, [debounceValue]);
+
   return (
     <section className="flex flex-col">
       <Header
@@ -52,6 +74,11 @@ const SearchPageComponent = () => {
       />
       <PageLayout>
         <SearchBar value={searchValue} onChange={handleChangeSearchValue} />
+        <Spacing size={18} />
+        <SearchPanel
+          searchList={searchStockList}
+          onChangeSearchValue={() => {}}
+        />
       </PageLayout>
     </section>
   );
