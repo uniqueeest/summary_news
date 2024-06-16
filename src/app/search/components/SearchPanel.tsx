@@ -9,18 +9,21 @@ import { StockType } from '@/models';
 
 interface SearchPanelProps {
   searchList: StockType[];
-  onChangeSearchValue: () => void;
+  navigateToTicker: (ticker: string) => void;
 }
 
 interface RowProps {
   index: number;
   style: CSSProperties;
-  data: StockType[];
+  data: {
+    items: StockType[];
+    navigateToTicker: (ticker: string) => void;
+  };
 }
 
 export const SearchPanel = ({
   searchList,
-  onChangeSearchValue,
+  navigateToTicker,
 }: SearchPanelProps) => {
   if (searchList.length === 0) {
     return (
@@ -33,7 +36,7 @@ export const SearchPanel = ({
               <Button
                 className="w-fit px-4 py-2 text-14 bg-gray200"
                 key={stock}
-                onClick={() => {}}
+                onClick={() => navigateToTicker(stock)}
               >
                 {stock}
               </Button>
@@ -48,7 +51,7 @@ export const SearchPanel = ({
               <Button
                 className="w-fit px-4 py-2 text-14 bg-gray200"
                 key={stock}
-                onClick={() => {}}
+                onClick={() => navigateToTicker(stock)}
               >
                 {stock}
               </Button>
@@ -65,7 +68,7 @@ export const SearchPanel = ({
       height={500}
       width="100%"
       itemCount={searchList.length !== 0 ? searchList.length : 0}
-      itemData={searchList.length !== 0 ? searchList : []}
+      itemData={{ items: searchList, navigateToTicker }}
     >
       {Row}
     </List>
@@ -73,12 +76,17 @@ export const SearchPanel = ({
 };
 
 const Row = ({ index, style, data }: RowProps) => {
-  const ticker = data[index].ticker.split('-')[0];
+  const { items, navigateToTicker } = data;
+  const ticker = items[index].ticker.split('-')[0];
 
   return (
-    <div className="flex flex-col" style={style}>
+    <div
+      className="flex flex-col"
+      style={style}
+      onClick={() => navigateToTicker(ticker)}
+    >
       <p className="text-14">{ticker}</p>
-      <p className="text-10 text-deep_blue">{data[index].name}</p>
+      <p className="text-10 text-deep_blue">{items[index].name}</p>
     </div>
   );
 };
