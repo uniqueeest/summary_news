@@ -32,6 +32,10 @@ const SearchPageComponent = ({ stockList }: { stockList: StockType[] }) => {
     debouncedSearch(value);
   };
 
+  const navigateToTicker = (ticker: string) => {
+    router.push(`/news/${ticker}`);
+  };
+
   useEffect(() => {
     return () => {
       debouncedSearch.cancel();
@@ -77,7 +81,7 @@ const SearchPageComponent = ({ stockList }: { stockList: StockType[] }) => {
         <Spacing size={18} />
         <SearchPanel
           searchList={searchStockList}
-          onChangeSearchValue={() => {}}
+          navigateToTicker={navigateToTicker}
         />
       </PageLayout>
     </section>
