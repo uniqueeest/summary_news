@@ -49,7 +49,7 @@ class Request {
     try {
       const response = await fetch(url, options);
       if (!response.ok) {
-        throw new Error(response.statusText);
+        throw new Error(String(response.status));
       }
       return await response.json();
     } catch (error: unknown) {
