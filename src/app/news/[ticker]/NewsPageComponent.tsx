@@ -48,7 +48,11 @@ export const NewsPageComponent = ({
             <div
               className="flex flex-col gap-1 border-b border-b-gray100"
               key={news.text}
-              onClick={() => router.push(`/news/${ticker}/${id}`)}
+              onClick={() =>
+                router.push(
+                  `/news/${ticker}/${id}?title=${encodeURIComponent(news.text)}`
+                )
+              }
             >
               <h2>{news.text}</h2>
               <p className="mb-3 self-end text-12">
