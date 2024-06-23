@@ -10,9 +10,11 @@ import { Header, PageLayout } from '@/components/layout';
 import { Button, Spacing } from '@/components/shared';
 
 export const DetailNewsPageComponent = ({
+  title,
   translateSummary,
   summaryData,
 }: {
+  title: string;
   translateSummary: {
     translations: {
       detected_source_language: string;
@@ -22,7 +24,7 @@ export const DetailNewsPageComponent = ({
   summaryData: NewsType;
 }) => {
   const router = useRouter();
-  const { headline, image, datetime, url } = summaryData;
+  const { image, datetime, url } = summaryData;
   const date = format(fromUnixTime(datetime), 'yyyy-MM-dd HH:mm:ss');
 
   return (
@@ -41,7 +43,7 @@ export const DetailNewsPageComponent = ({
         title=""
       />
       <PageLayout>
-        <h2 className="text-20 font-bold">{headline}</h2>
+        <h2 className="text-20 font-bold">{title}</h2>
         <p>{date}</p>
         <Spacing size={24} />
         {image ? (
