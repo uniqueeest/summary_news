@@ -4,9 +4,16 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 import { Header } from '@/components/layout';
+import { MarketType } from '@/models';
 
-const MainPageComponent = () => {
+const MainPageComponent = ({
+  marketNewsData,
+}: {
+  marketNewsData: MarketType[];
+}) => {
   const router = useRouter();
+
+  console.log(marketNewsData);
 
   return (
     <section className="flex flex-col">
@@ -24,6 +31,11 @@ const MainPageComponent = () => {
           </div>
         }
       />
+      <div className="flex flex-col gap-3">
+        {marketNewsData.map((news) => (
+          <div key={news.id}>{news.headline}</div>
+        ))}
+      </div>
     </section>
   );
 };
