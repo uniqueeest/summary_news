@@ -2,18 +2,19 @@
 
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { format, fromUnixTime } from 'date-fns';
 
-import { Header } from '@/components/layout';
-import { MarketType } from '@/models';
+import { Header, PageLayout } from '@/components/layout';
+import { MarketType, NewsListType } from '@/models';
 
 const MainPageComponent = ({
   marketNewsData,
+  translateTitleList,
 }: {
   marketNewsData: MarketType[];
+  translateTitleList: NewsListType;
 }) => {
   const router = useRouter();
-
-  console.log(marketNewsData);
 
   return (
     <section className="flex flex-col">
@@ -31,11 +32,29 @@ const MainPageComponent = ({
           </div>
         }
       />
-      <div className="flex flex-col gap-3">
-        {marketNewsData.map((news) => (
-          <div key={news.id}>{news.headline}</div>
+      <PageLayout>
+        {marketNewsData.map((news, index) => (
+          <div
+            key={news.id}
+            className="flex items-center gap-3 py-2 border-b border-b-gray200"
+          >
+            <Image
+              width={24}
+              height={24}
+              src={news.image}
+              alt="thumbnail-image"
+            />
+            <div className="flex flex-col flex-1 gap-2">
+              <h2 className="leading-5">
+                {translateTitleList.translations[index].text}
+              </h2>
+              <p className="text-end text-12 text-deep_blue">
+                {format(fromUnixTime(news.datetime), 'yyyy-MM-dd HH:mm:ss')}
+              </p>
+            </div>
+          </div>
         ))}
-      </div>
+      </PageLayout>
     </section>
   );
 };
