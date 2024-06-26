@@ -6,14 +6,7 @@ import { fromUnixTime, format } from 'date-fns';
 
 import { Header, PageLayout } from '@/components/layout';
 import { Spacing } from '@/components/shared';
-import { NewsType } from '@/models';
-
-type NewsList = {
-  translations: {
-    detected_source_language: string;
-    text: string;
-  }[];
-};
+import { NewsType, NewsListType } from '@/models';
 
 export const NewsPageComponent = ({
   ticker,
@@ -21,7 +14,7 @@ export const NewsPageComponent = ({
   newsList,
 }: {
   ticker: string;
-  translateTitleList: NewsList;
+  translateTitleList: NewsListType;
   newsList: NewsType[];
 }) => {
   const router = useRouter();
