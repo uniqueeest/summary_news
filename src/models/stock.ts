@@ -6,3 +6,12 @@ export type StockType = {
   label: string;
   value: string;
 };
+
+export type MarketType = {
+  category: string;
+  datetime: string;
+  headline: string;
+  image: string;
+  id: string;
+  summary: string;
+};
