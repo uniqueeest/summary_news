@@ -9,9 +9,16 @@ export type StockType = {
 
 export type MarketType = {
   category: string;
-  datetime: string;
+  datetime: number;
   headline: string;
   image: string;
   id: string;
   summary: string;
+};
+
+export type NewsListType = {
+  translations: {
+    detected_source_language: string;
+    text: string;
+  }[];
 };
