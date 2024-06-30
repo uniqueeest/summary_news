@@ -37,10 +37,16 @@ const MainPageComponent = ({
           <div
             key={news.id}
             className="flex items-center gap-3 py-2 border-b border-b-gray200"
+            onClick={() =>
+              router.push(
+                `${news.id}?title=${encodeURIComponent(
+                  translateTitleList.translations[index].text
+                )}`
+              )
+            }
           >
-            <Image
-              width={24}
-              height={24}
+            <img
+              className="w-6 h-6 object-cover"
               src={news.image}
               alt="thumbnail-image"
             />
