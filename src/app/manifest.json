@@ -1,0 +1,19 @@
+{
+  "background_color": "#ffffff",
+  "description": "summary news app",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "SNews",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "summary-news",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/icons/icons.png",
+      "type": "image/png",
+      "sizes": "72x72"
+    }
+  ]
+}
